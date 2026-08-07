@@ -1,0 +1,177 @@
+/* StitchBook — Design System Tokens
+   These CSS variables form the complete design system.
+   Used across both the web dashboard and the client portal.
+*/
+
+@import "tailwindcss";
+
+@theme {
+  /* ── Colour Palette ─────────────────────────────────────── */
+  --color-ink:          #14120c;
+  --color-ink-2:        #3a3628;
+  --color-ink-3:        #7a7560;
+  --color-surface:      #faf8f4;
+  --color-bg:           #f0ece3;
+  --color-white:        #ffffff;
+  --color-rule:         #d8d2c4;
+  --color-rule-2:       #e8e4da;
+
+  /* Brand */
+  --color-gold:         #b8860b;
+  --color-gold-mid:     #c9a84c;
+  --color-gold-dim:     #8a7030;
+  --color-gold-bg:      #fdf8ee;
+
+  /* Status */
+  --color-sage:         #2d6a4f;
+  --color-sage-bg:      #edf5f0;
+  --color-terracotta:   #b5522a;
+  --color-terracotta-bg:#fdf1ec;
+  --color-navy:         #1e3a5f;
+  --color-navy-bg:      #edf1f7;
+  --color-amber:        #8c6d1f;
+  --color-amber-bg:     #fdf6e3;
+
+  /* Pipeline status colours */
+  --color-status-booked:      #6b7280;
+  --color-status-measured:    #3b82f6;
+  --color-status-cutting:     #8b5cf6;
+  --color-status-in-progress: #f59e0b;
+  --color-status-fitting:     #ec4899;
+  --color-status-adjustments: #f97316;
+  --color-status-ready:       #10b981;
+  --color-status-delivered:   #059669;
+  --color-status-cancelled:   #ef4444;
+
+  /* ── Typography ─────────────────────────────────────────── */
+  --font-serif:  'Libre Baskerville', Georgia, serif;
+  --font-sans:   'DM Sans', system-ui, sans-serif;
+  --font-mono:   'DM Mono', 'Courier New', monospace;
+
+  /* ── Spacing ────────────────────────────────────────────── */
+  --spacing-px:    1px;
+  --spacing-0:     0;
+  --spacing-1:     0.25rem;
+  --spacing-2:     0.5rem;
+  --spacing-3:     0.75rem;
+  --spacing-4:     1rem;
+  --spacing-5:     1.25rem;
+  --spacing-6:     1.5rem;
+  --spacing-8:     2rem;
+  --spacing-10:    2.5rem;
+  --spacing-12:    3rem;
+  --spacing-16:    4rem;
+  --spacing-20:    5rem;
+  --spacing-24:    6rem;
+
+  /* ── Border radius ──────────────────────────────────────── */
+  --radius-sm:   2px;
+  --radius-md:   4px;
+  --radius-lg:   8px;
+  --radius-full: 9999px;
+
+  /* ── Shadows ────────────────────────────────────────────── */
+  --shadow-sm:  0 1px 3px rgba(20,18,12,0.08);
+  --shadow-md:  0 4px 16px rgba(20,18,12,0.10);
+  --shadow-lg:  0 8px 32px rgba(20,18,12,0.12);
+}
+
+/* ── Base styles ─────────────────────────────────────────────── */
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* RTL support — set via next-intl on <html> element */
+  [dir="rtl"] {
+    font-family: 'Noto Sans Arabic', 'Noto Nastaliq Urdu', var(--font-sans);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--color-ink);
+  }
+
+  code, pre, kbd {
+    font-family: var(--font-mono);
+  }
+
+  /* Focus ring — accessible, on-brand */
+  *:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+  }
+
+  /* Scrollbar — subtle */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--color-bg); }
+  ::-webkit-scrollbar-thumb { background: var(--color-rule); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--color-ink-3); }
+}
+
+/* ── Component utilities ─────────────────────────────────────── */
+@layer components {
+  /* Status badge */
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1px solid currentColor;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Card base */
+  .card {
+    background: var(--color-white);
+    border: 1px solid var(--color-rule);
+    border-radius: var(--radius-md);
+  }
+
+  /* Section label */
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+  }
+
+  /* Measurement layer badges */
+  .badge-l1 {
+    background: #1a1a18;
+    color: var(--color-gold-mid);
+    font-family: var(--font-mono);
+    font-size: 9px;
+    padding: 2px 6px;
+    letter-spacing: 0.1em;
+  }
+  .badge-l2 {
+    background: #2d4a2a;
+    color: #7bc47a;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    padding: 2px 6px;
+  }
+  .badge-l3 {
+    background: #1a3050;
+    color: #7aaed4;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    padding: 2px 6px;
+  }
+}
